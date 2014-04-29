@@ -1,0 +1,28 @@
+<h3>Locations</h3>
+
+<table class="table">
+  <tr>
+    <th width="260">Name</th>
+    <th width="260">Street 1</th>
+    <th width="260">Street 2</th>
+    <th width="120">City</th>
+    <th width="120">State</th>
+    <th width="120">Zip</th>
+    <th width="120">Max_Capacity</th>
+    <th width="120">Active</th>
+
+    <th></th>
+    <th></th>
+  </tr>
+
+<% locations.each do |location| %>
+  <tr>
+    <td><%= link_to location.name, location_path(location) %></td>
+    <td><%= link_to 'Edit', edit_location_path(location), class: "button tiny radius" %></td>
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate locations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
