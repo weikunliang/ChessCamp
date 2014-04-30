@@ -1,5 +1,8 @@
 class FamiliesController < ApplicationController
+  include ActionView::Helpers::NumberHelper
+  authorize_resource
   before_action :set_family, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
 
   def index
     @active_families = Family.active.alphabetical.paginate(:page => params[:page]).per_page(10)

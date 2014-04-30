@@ -1,5 +1,8 @@
 class LocationsController < ApplicationController
+  include ActionView::Helpers::NumberHelper
+  authorize_resource
 	before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
 
   def index
     @active_locations = Location.active.alphabetical.paginate(:page => params[:page]).per_page(10)

@@ -9,6 +9,13 @@
     <%= f.input :active %>
     <%= f.input :bio, input_html: { rows: 6 } %>
 
+     <div class="small-5 columns">
+        <% if controller.action_name=="edit" && @instructor.active %>
+        <%= f.input :user_attributes_password %>
+        <%= f.input :user_attributes_password_confirmation %>
+        <% end %>
+      </div>
+
     <div class="form-actions">
       <%= f.submit nil, class: 'button radius' %>
       <%= link_to 'Back to list of instructors', instructors_path, :class => 'button secondary radius' %>
