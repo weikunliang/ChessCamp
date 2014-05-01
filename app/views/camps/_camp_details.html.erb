@@ -34,6 +34,9 @@
 <strong>Active?&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />
 
+<strong>Location&nbsp;&nbsp;</strong>
+<%= image_tag @camp.create_map_link %>
+
 
 
 <%= link_to "Edit this camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;

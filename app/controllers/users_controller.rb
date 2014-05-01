@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include ActionView::Helpers::NumberHelper
-  authorize_resource
   before_action :check_login, only: [:edit, :update, :destroy]
+  authorize_resource
 
   def new
     @user = User.new

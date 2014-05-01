@@ -5,7 +5,7 @@
         <h3><%= controller.action_name.capitalize %> Student</h3>
         <%= f.input :first_name %>
         <%= f.input :last_name %>
-        <%= f.input :family_id, collection: Family.active.alphabetical, prompt: "Select family..."  %>
+        <%= f.input :family_id, collection: Family.active.alphabetical.map{|f| [f.family_name, f.id]}, prompt: "Select family..."  %>
         <%= f.label :date_of_birth %>
         <%= f.date_field :date_of_birth %>
         <%= f.input :rating %>

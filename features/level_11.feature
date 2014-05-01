@@ -59,7 +59,6 @@ Feature: Authorization
 
   Scenario: Patrick is able to see students in his camps
     When I go to the camp20 details page
-    Then show me the page
     And I click on the link "Gazica, Josh" 
     Then I should see "Student Details"
     And I should see "Josh Gazica" 
