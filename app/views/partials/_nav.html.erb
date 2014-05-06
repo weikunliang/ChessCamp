@@ -1,16 +1,20 @@
-  <div class="contain-to-grid">
+  <div>
     <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <%= link_to image_tag('amcc_logo.png'), home_path %>
-          <h1>Chess Camp Manager</h1>
-        </li>
-      </ul>
+      
       <section class="top-bar-section">
-        <ul class="left">
-          <li>
-            <%= link_to "Dashboard", home_path %>
-          </li>
+          <% if logged_in? %>
+            <ul class="left">
+              <li class="has-dropdown">
+              <%= link_to "Dashboard", user_path(current_user) %>
+              <ul class="dropdown">
+                <li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Logout", logout_path %></li>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+
+          <ul class="right">
 
           <!-- options for curriculums -->
           <li class="has-dropdown">
