@@ -1,7 +1,6 @@
 class InstructorsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
-  before_action :check_login
   #authorize_resource
 
   def index
@@ -59,6 +58,6 @@ class InstructorsController < ApplicationController
     end
 
     def instructor_params
-      params.require(:instructor).permit(:id, :first_name, :last_name, :bio, :email, :phone, :active, user_attributes: [:instructor_id, :username, :role, :password, :password_confirmation, :id])
+      params.require(:instructor).permit(:id, :first_name, :last_name, :bio, :email, :phone, :photo, :active, user_attributes: [:instructor_id, :username, :role, :password, :password_confirmation, :id])
     end
 end

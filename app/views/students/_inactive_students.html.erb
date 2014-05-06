@@ -1,10 +1,13 @@
-<% unless @inactive_students.empty? %>
-  <div class="panel clearfix">
-    <h5>Inactive Students</h5>
-    <ul class="side-nav">
-      <% @inactive_students.each do |student| %>
-        <li><%= link_to student.name, student_path(student) %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+<div class="panel clearfix">
+<h5>Inactive Students</h5>
+<ul class="side-nav">
+	<% unless @inactive_students.empty? %>
+	  <% @inactive_students.each do |student| %>
+	    <li><%= link_to student.name, student_path(student) %></li>
+	  <% end %>
+	<% else %>
+	  <p>No inactive students</p>
+	<% end %>
+</ul>
+</div>

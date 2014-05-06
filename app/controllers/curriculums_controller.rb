@@ -1,7 +1,6 @@
 class CurriculumsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
-  before_action :check_login
   authorize_resource
 
   def index

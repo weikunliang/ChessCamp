@@ -8,6 +8,7 @@
       <section class="top-bar-section">
         <ul class="left">
           <!-- options for curriculums -->
+
           <li class="has-dropdown">
             <%= link_to "Curriculums", curriculums_path %>
             <ul class="dropdown">
@@ -32,6 +33,15 @@
             <ul class="dropdown">
               <li><%= link_to "List Instructors", instructors_path %></li>
               <li><%= link_to "Add an Instructor", new_instructor_path %></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <!-- <a href="#">Instructors</a> -->
+            <%= link_to "Locations", locations_path %>
+            <ul class="dropdown">
+              <li><%= link_to "List Locations", locations_path %></li>
+              <li><%= link_to "Add a Location", new_location_path %></li>
             </ul>
           </li>
         </ul>

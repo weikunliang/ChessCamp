@@ -15,14 +15,18 @@
     <th></th>
   </tr>
 
-<% locations.each do |location| %>
-  <tr>
-    <td><%= link_to location.name, location_path(location) %></td>
-    <td><%= link_to 'Edit', edit_location_path(location), class: "button tiny radius" %></td>
-  </tr>
+<% unless locations.empty? %>
+  <% locations.each do |location| %>
+    <tr>
+      <td><%= link_to location.name, location_path(location) %></td>
+      <td><%= link_to 'Edit', edit_location_path(location), class: "button tiny radius" %></td>
+    </tr>
+  <% end %>
+  </table>
+  <!-- Add the pagination using will_paginate gem -->
+  <span class="paginate">
+  <%= will_paginate locations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  </span>
+<% else %>
+  <p>No locations</p>
 <% end %>
-</table>
-<!-- Add the pagination using will_paginate gem -->
-<span class="paginate">
-<%= will_paginate locations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>

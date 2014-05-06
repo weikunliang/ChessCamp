@@ -1,5 +1,7 @@
 <h3><%= status %> Students</h3>
 
+
+<% unless @active_students.empty? %>
 <table class="table">
   <tr>
     <th width="200">Name</th>
@@ -9,16 +11,19 @@
     <th></th>
   </tr>
 
-<% @active_students.each do |student| %>
-  <tr>
-    <td><%= link_to student.name, student_path(student) %></td>
-    <td align="center"><%= student.age %></td>
-    <td align="center"><%= student.rating == 0 ? "Unrated" : student.rating %></td>
-    <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
-  </tr>
+  <% @active_students.each do |student| %>
+    <tr>
+      <td><%= link_to student.name, student_path(student) %></td>
+      <td align="center"><%= student.age %></td>
+      <td align="center"><%= student.rating == 0 ? "Unrated" : student.rating %></td>
+      <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
+    </tr>
+  <% end %>
+  </table>
+  <!-- Add the pagination using will_paginate gem -->
+  <span class="paginate">
+  <%= will_paginate @active_students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  </span>
+<% else %>
+  <p>No students</p>
 <% end %>
-</table>
-<!-- Add the pagination using will_paginate gem -->
-<span class="paginate">
-<%= will_paginate @active_students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>

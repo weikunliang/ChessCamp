@@ -34,11 +34,13 @@ class Ability
     if user.role? :admin
         can :manage, :all
     elsif user.role? :instructor
+        can :read, Camp
+        can :read, Instructor
+        can :read, Curriculum
+        can :read, Location
+
         can :update, Instructor do |instructor|  
           instructor.id == user.instructor_id
-        end
-        can :create, User do |u|  
-          u.id == user.id
         end
         can :update, User do |u|  
           u.id == user.id
@@ -49,10 +51,18 @@ class Ability
         can :edit, User do |u|  
           u.id == user.id
         end
-    else
-        can :read, :all
-    end
 
+        # only allow instructor to read students of their camp
+        can :show, Student do |student|
+          camps_students_ids = user.instructor.camps.map{|c| c.students.map{|s| s.id}}.flatten
+          camps_students_ids.include?(student.id)
+        end
+    else
+        can :read, Camp
+        can :read, Instructor
+        can :read, Location
+        can :read, Curriculum
+    end
 
   end
 end

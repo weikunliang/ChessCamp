@@ -14,6 +14,10 @@
 <strong>Biography</strong><br />
   <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
 
+<% unless @instructor.picture_url.nil? %>
+    <p><%= image_tag @instructor.picture_url %></p>
+<% end %>
+
 <% if not @instructor.user.nil? %>
 	<strong>Role</strong>
 	  <%= @instructor.user.role %><br /><br />

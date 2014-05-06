@@ -1,0 +1,20 @@
+<% unless @registrations.empty? %>
+  <!-- <h3>&nbsp;</h3> -->
+  <div class="panel clearfix">
+    <h5>Registrations</h5>
+    <ul class="side-nav">
+      <% @registrations.each do |reg| %>
+        <li><%= link_to reg.student.proper_name, student_path(reg.student) %></li>
+        <%= link_to 'Edit', edit_registration_path(reg), class: "button tiny radius" %>
+        <%= link_to 'Delete', camp_path(reg.camp), data: { confirm: 'Are you sure you want to permanently remove this registration from the system?' }, method: :delete, class: "button tiny radius alert" %>
+      <% end %>
+    </ul>
+  </div>
+
+<% else %>
+  <div class="panel clearfix">
+    <h5>No Registrations</h5>
+  </div>
+<% end %>
+
+<%= link_to 'Add registrations', new_registration_path(:id => @camp.id), class: "button tiny radius" %>

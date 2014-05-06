@@ -6,17 +6,17 @@
         <%= f.input :first_name %>
         <%= f.input :last_name %>
         <%= f.input :family_id, collection: Family.active.alphabetical.map{|f| [f.family_name, f.id]}, prompt: "Select family..."  %>
-        <%= f.label :date_of_birth %>
-        <%= f.date_field :date_of_birth %>
+        <% if !@student.date_of_birth.nil? %>
+          <%= f.input :date_of_birth,  as: :string, input_html: { class: 'datepicker', :value => @student.date_of_birth.strftime('%m/%d/%Y') } %>
+          <% else %>
+          <%= f.input :date_of_birth,  as: :string, input_html: { class: 'datepicker' } %>
+        <% end %>
         <%= f.input :rating %>
         <%= f.input :active %>
       </div>
       <div class="small-1 columns">&nbsp;</div>
       <div class="small-5 columns">
-        <% if controller.action_name=="edit" && @student.active %>
-        <h3>Registration(s)</h3>
-        <%= f.input :camp_ids, label: "", collection: Camp.active.alphabetical, as: :check_boxes %>
-        <% end %>
+
       </div>
     </div>
 

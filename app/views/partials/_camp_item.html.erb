@@ -1,0 +1,16 @@
+<% unless camp_item.nil? %>
+	<div>
+		<p>
+			<div class="tl_name">
+				<span class="smtext">
+					<%= link_to(camp_item.name, camp_path(camp_item)) %><br />
+				</span>
+			</div>
+			<div class="tl_date">
+				<span class="smtext"><%= camp_item.start_date.strftime("%b %d") %></span> - 
+				<span class="smtext"><%= camp_item.end_date.strftime("%b %d") %></span>
+			</div>
+			
+		</p>
+	</div>
+<% end %>

@@ -7,6 +7,7 @@ ChessCamp::Application.routes.draw do
   resources :students
   resources :users
   resources :locations
+  resources :registrations
 
 
   # semi-static routes
