@@ -2,7 +2,7 @@ require 'test_helper'
 
 class InstructorTest < ActiveSupport::TestCase
   # test relationships
-  should accept_nested_attributes_for(:users).allow_destroy(true)
+  should accept_nested_attributes_for(:user).allow_destroy(true)
   should have_many(:camp_instructors)
   should have_many(:camps).through(:camp_instructors)
   should have_one(:user)

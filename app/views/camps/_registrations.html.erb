@@ -6,7 +6,7 @@
       <% @registrations.each do |reg| %>
         <li><%= link_to reg.student.proper_name, student_path(reg.student) %></li>
         <%= link_to 'Edit', edit_registration_path(reg), class: "button tiny radius" %>
-        <%= link_to 'Delete', camp_path(reg.camp), data: { confirm: 'Are you sure you want to permanently remove this registration from the system?' }, method: :delete, class: "button tiny radius alert" %>
+        <%= link_to "Destroy", reg, confirm: 'Are you sure?', method: :delete, class: "button tiny radius alert" %>
       <% end %>
     </ul>
   </div>

@@ -17,4 +17,4 @@
   <br /><br />
 
 <%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<%= link_to "Destroy", @location, confirm: 'Are you sure?', method: :delete, class: "button tiny radius alert" %>

@@ -1,4 +1,9 @@
 <h3>Instructor Details</h3><br />
+
+<% if not @instructor.picture_url.nil? %>
+  <p><%= image_tag @instructor.picture_url %></p>
+<% end %>
+
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= @instructor.proper_name %><br /><br />
 
@@ -14,10 +19,6 @@
 <strong>Biography</strong><br />
   <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
 
-<% unless @instructor.picture_url.nil? %>
-    <p><%= image_tag @instructor.picture_url %></p>
-<% end %>
-
 <% if not @instructor.user.nil? %>
 	<strong>Role</strong>
 	  <%= @instructor.user.role %><br /><br />
@@ -28,4 +29,3 @@
 
 
 <%= link_to "Edit this instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Destroy instructor', instructor_path(@instructor), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "button tiny radius alert" %>

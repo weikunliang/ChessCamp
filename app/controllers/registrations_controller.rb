@@ -1,5 +1,6 @@
 class RegistrationsController < ApplicationController
   before_action :set_registration, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   def index
   end
@@ -18,7 +19,7 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
     if @registration.save
-      redirect_to @registration.camp, notice: "#{@registration.camp.name} was added to the system."
+      redirect_to @registration.camp, notice: "#{@registration.student.proper_name} was added to the system."
     else
       render action: 'new'
     end
@@ -26,7 +27,7 @@ class RegistrationsController < ApplicationController
 
   def update
     if @registration.update(registration_params)
-      redirect_to @registration.camp, notice: "#{@registration.camp.name} was revised in the system."
+      redirect_to @registration.camp, notice: "#{@registration.student.proper_name} was revised in the system."
     else
       render action: 'edit'
     end

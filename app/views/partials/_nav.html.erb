@@ -3,12 +3,16 @@
       <ul class="title-area">
         <li class="name">
           <%= link_to image_tag('amcc_logo.png'), home_path %>
+          <h1>Chess Camp Manager</h1>
         </li>
       </ul>
       <section class="top-bar-section">
         <ul class="left">
-          <!-- options for curriculums -->
+          <li>
+            <%= link_to "Dashboard", home_path %>
+          </li>
 
+          <!-- options for curriculums -->
           <li class="has-dropdown">
             <%= link_to "Curriculums", curriculums_path %>
             <ul class="dropdown">

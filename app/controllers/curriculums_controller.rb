@@ -39,8 +39,13 @@ class CurriculumsController < ApplicationController
   end
 
   def destroy
-    @curriculum.destroy
-    redirect_to curriculums_url, notice: "#{@curriculum.name} was removed from the system."
+    status = @curriculum.destroy
+    if status
+      flash[:notice] = "#{@curriculum.name} was removed from the system."
+      redirect_to curriculums_url
+    else
+      flash[:error] = "#{@curriculum.name} could not be deleted because there are upcoming camps associated with it."
+    end
   end
 
   private
