@@ -1,7 +1,7 @@
 <h3>Instructor Details</h3><br />
 
 <% if not @instructor.picture_url.nil? %>
-  <p><%= image_tag @instructor.picture_url %></p>
+  <p><%= image_tag @instructor.picture_url, size: '250' %></p>
 <% end %>
 
 <strong>Name:&nbsp;&nbsp;</strong> 
@@ -29,3 +29,4 @@
 
 
 <%= link_to "Edit this instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to 'Back to list of instructors', instructors_path, :class => 'button tiny radius' %>

@@ -6,17 +6,18 @@
           <%= render :partial => "instructor_fields", :locals => { :f => instructor_form } %>
         </fieldset>
       </div>
+    
 
-    <div class="span5">
-      <legend>User</legend>
-        <div id="instructor_attractions">
-          <%= instructor_form.simple_fields_for :user do |user_form| %>
-            <%= render :partial => "user_fields", :locals => { :f => user_form } %>
-          <% end %> 
-         
-        </div> 
+      <fieldset>
+          <legend>User</legend>
+            <div id="instructor_attractions">
+              <%= instructor_form.simple_fields_for :user do |user_form| %>
+                <%= render :partial => "user_fields", :locals => { :f => user_form } %>
+              <% end %> 
+            </div> 
+      </fieldset>
       </div>
-    </div>
+
     <div class="form-actions">
       <%= instructor_form.submit nil, :class => 'button radius' %>
       <%= link_to 'Cancel', instructors_path, :class => 'button secondary' %>

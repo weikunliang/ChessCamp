@@ -5,16 +5,33 @@
           <% if logged_in? %>
             <ul class="left">
               <li class="has-dropdown">
-              <%= link_to "Dashboard", user_path(current_user) %>
+              <%= link_to "Dashboard", home_path %>
               <ul class="dropdown">
                 <li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
                 <li><%= link_to "Logout", logout_path %></li>
               </ul>
             </li>
-          <% end %>
-        </ul>
+            </ul>
 
           <ul class="right">
+
+          <% if current_user.role == 'admin' %>
+            <li class="has-dropdown">
+              <%= link_to "Students", students_path %>
+              <ul class="dropdown">
+                <li><%= link_to "List Students", students_path %></li>
+                <li><%= link_to "Add a Student", new_student_path %></li>
+              </ul>
+            </li>
+
+            <li class="has-dropdown">
+              <%= link_to "Families", families_path %>
+              <ul class="dropdown">
+                <li><%= link_to "List Families", families_path %></li>
+                <li><%= link_to "Add a Family", new_family_path %></li>
+              </ul>
+            </li>
+          <% end %>
 
           <!-- options for curriculums -->
           <li class="has-dropdown">
@@ -53,6 +70,7 @@
             </ul>
           </li>
         </ul>
+        <% end %>
       </section>
     </nav>
   </div>

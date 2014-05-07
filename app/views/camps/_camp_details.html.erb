@@ -9,10 +9,18 @@
   <%= "(#{@camp.registrations.size})" %><br /><br />
 
 <strong>Students:&nbsp;&nbsp;</strong> 
-  <% @camp.students.each do |c| %>
-    <%= link_to c.name, student_path(c) %>: <%= c.rating %><br />
-
-  <% end %>
+  <table>
+    <tr>
+      <th>Student Name</th>
+      <th>Rating</th>
+    </tr>
+    <% @camp.students.alphabetical.each do |c| %>
+    <tr>
+      <td><%= link_to c.name, student_path(c) %></td>
+      <td><%= c.rating %></td>
+    </tr>
+    <% end %>
+  </table>
   <br /><br />
 
 <strong>Cost:&nbsp;&nbsp;</strong> 
@@ -35,9 +43,10 @@
   <%= @camp.active ? "Yes" : "No" %><br /><br />
 
 <strong>Location&nbsp;&nbsp;</strong>
-<%= image_tag @camp.create_map_link %>
+<%= image_tag @camp.create_map_link %><br /><br />
 
 
 
 <%= link_to "Edit this camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to 'Back to list of camps', camps_path, :class => 'button tiny radius' %>&nbsp;&nbsp;
 <%= link_to "Destroy", @camp, confirm: 'Are you sure?', method: :delete, class: "button tiny radius alert" %>

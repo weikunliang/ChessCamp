@@ -7,7 +7,7 @@
   <%= @location.street_2 %><br /><br />
   <%= @location.city %>, 
   <%= @location.state %>
-  <%= @location.zip %>
+  <%= @location.zip %><br /><br />
 
 <strong>Maximum Capacity:&nbsp;&nbsp;</strong> 
   <%= @location.max_capacity %><br /><br />
@@ -17,4 +17,5 @@
   <br /><br />
 
 <%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to 'Back to list of locations', locations_path, :class => 'button tiny radius' %> &nbsp;&nbsp;
 <%= link_to "Destroy", @location, confirm: 'Are you sure?', method: :delete, class: "button tiny radius alert" %>

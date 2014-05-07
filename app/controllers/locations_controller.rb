@@ -37,6 +37,7 @@ class LocationsController < ApplicationController
   end
 
   def destroy
+    # check if location is destroyable
     status = @location.destroy
     if status
       flash[:notice] = "#{@location.name} location was removed from the system."

@@ -1,15 +1,16 @@
 <% unless @registrations.empty? %>
   <!-- <h3>&nbsp;</h3> -->
-  <div class="panel clearfix">
+  <table>
     <h5>Registrations</h5>
-    <ul class="side-nav">
       <% @registrations.each do |reg| %>
-        <li><%= link_to reg.student.proper_name, student_path(reg.student) %></li>
-        <%= link_to 'Edit', edit_registration_path(reg), class: "button tiny radius" %>
-        <%= link_to "Destroy", reg, confirm: 'Are you sure?', method: :delete, class: "button tiny radius alert" %>
+        <tr>
+          <td><%= link_to reg.student.proper_name, student_path(reg.student) %></td>
+          <td><%= link_to 'Edit', edit_registration_path(reg), class: "button tiny radius" %></td>
+          <td><%= link_to "Destroy", reg, confirm: 'Are you sure?', method: :delete, class: "button tiny radius alert" %></td>
+        </tr>
       <% end %>
     </ul>
-  </div>
+  </table>
 
 <% else %>
   <div class="panel clearfix">

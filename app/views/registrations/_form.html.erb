@@ -3,7 +3,7 @@
    <h3><%= controller.action_name.capitalize %> Registration</h3>
     
     <%= f.input :camp_id, collection: Camp.active.alphabetical, prompt: "Select camp..."  %>
-    <%= f.input :student_id, collection: Student.active.alphabetical, prompt: "Select student..."  %>
+    <%= f.input :student_id, collection: @student.map{|s| [s.proper_name, s.id]}, prompt: "Select student..."  %>
     <%= f.input :payment_status, collection: %w[deposit full] %>
     <%= f.input :points_earned %>
 

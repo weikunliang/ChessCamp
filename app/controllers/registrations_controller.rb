@@ -11,6 +11,17 @@ class RegistrationsController < ApplicationController
   def new
     @registration = Registration.new
     @registration.camp_id = params[:id] unless params[:id].nil?
+    all_students = Student.active.alphabetical
+
+    # get the array of all students whose registration rating is in range
+    @student = Array.new
+    min = @registration.camp.curriculum.min_rating
+    max = @registration.camp.curriculum.max_rating
+    all_students.each do |a|
+      if (min..max).cover?(a.rating)
+        @student << a
+      end
+    end
   end
 
   def edit

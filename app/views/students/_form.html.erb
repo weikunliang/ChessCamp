@@ -6,11 +6,13 @@
         <%= f.input :first_name %>
         <%= f.input :last_name %>
         <%= f.input :family_id, collection: Family.active.alphabetical.map{|f| [f.family_name, f.id]}, prompt: "Select family..."  %>
+
         <% if !@student.date_of_birth.nil? %>
           <%= f.input :date_of_birth,  as: :string, input_html: { class: 'datepicker', :value => @student.date_of_birth.strftime('%m/%d/%Y') } %>
           <% else %>
           <%= f.input :date_of_birth,  as: :string, input_html: { class: 'datepicker' } %>
         <% end %>
+
         <%= f.input :rating %>
         <%= f.input :active %>
       </div>

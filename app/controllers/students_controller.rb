@@ -9,16 +9,13 @@ class StudentsController < ApplicationController
   end
 
   def show
-    #authorize! :show, @student
   end
 
   def new
     @student = Student.new
-    #authorize! :new, @student
   end
 
   def edit
-    #authorize! :edit, @student
   end
 
   def create

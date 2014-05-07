@@ -4,6 +4,8 @@
 
 <strong>Age:&nbsp;&nbsp;</strong> 
   <%= @student.age %><br /><br />
+
+<strong>Date of Birth:&nbsp;&nbsp;</strong>
   <%= @student.date_of_birth.strftime('%m/%d/%Y') %> <br /><br />
 
 <strong>Rating:&nbsp;&nbsp;</strong> 
@@ -21,3 +23,4 @@
   <br /><br />
 
 <%= link_to "Edit this student", edit_student_path(@student), class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to 'Back to list of students', students_path, :class => 'button tiny radius' %>

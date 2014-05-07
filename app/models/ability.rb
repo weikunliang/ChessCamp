@@ -39,16 +39,28 @@ class Ability
         can :read, Curriculum
         can :read, Location
 
+        # allows the instructor to update personal information
         can :update, Instructor do |instructor|  
           instructor.id == user.instructor_id
         end
+
+        # can update their own profile
         can :update, User do |u|  
           u.id == user.id
         end
+
+        # can edit their personal information 
         can :edit, Instructor do |instructor|  
           instructor.id == user.instructor_id
         end
+
+        # can edit their own profile
         can :edit, User do |u|  
+          u.id == user.id
+        end
+
+        # allows the instructor to look at the users details
+        can :show, User do |u|  
           u.id == user.id
         end
 
@@ -58,6 +70,8 @@ class Ability
           camps_students_ids.include?(student.id)
         end
     else
+
+        # allows all guest users to read the required information
         can :read, Camp
         can :read, Instructor
         can :read, Location

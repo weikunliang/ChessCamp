@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require foundation
@@ -18,3 +19,10 @@
 
 $(function(){ $(document).foundation(); });
 
+
+// Datepicker code
+$(function() {
+  $(".datepicker").datepicker({
+    format: 'mm/dd/YYYY'
+  });
+});

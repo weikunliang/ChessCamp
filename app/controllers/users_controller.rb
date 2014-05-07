@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(user_params)
-      redirect_to(@user, :notice => 'User was successfully updated.')
+      redirect_to home_path, :notice => 'User was successfully updated.'
     else
       render :action => "edit"
     end

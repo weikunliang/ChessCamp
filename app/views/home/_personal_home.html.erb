@@ -1,60 +1,89 @@
-<h3>Welcome back, <%= current_user.username %></h3>
+<h2><em><strong>Welcome back, <%= current_user.username %>!</strong></em></h2>
 
-<% if current_user.role == 'instructor' %>
-
-	<table border="0" cellspacing="5" cellpadding="5">
-		<tr valign="top">
-			<td>
-				<h3>Personal Information &nbsp;&nbsp;</h3>
-				<% if current_user.instructor.picture_url.nil? %>
-					<p><%= image_tag 'default.jpg' %></p>
-				<% else %>
-					<p><%= image_tag current_user.instructor.picture_url %></p>
-				<% end %>
-
-				<strong>Name:&nbsp;&nbsp;</strong> 
-				  <%= current_user.instructor.proper_name %><br /><br />
-
-				<strong>Phone:&nbsp;&nbsp;</strong> 
-				  <%= number_to_phone(current_user.instructor.phone) %><br /><br />
-
-				<strong>Email:&nbsp;&nbsp;</strong> 
-				  <%= mail_to current_user.instructor.email, current_user.instructor.email, encode: "javascript" %><br /><br />
-
-				<strong>Active?&nbsp;&nbsp;</strong>
-				  <%= current_user.instructor.active ? "Yes" : "No" %><br /><br />
-
-				<strong>Biography</strong><br />
-				  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
-
-
-				<%= link_to "Edit information", edit_instructor_path(current_user.instructor), class: "button tiny radius" %>&nbsp;&nbsp;
-
-			</td>
-			<td width="50">&nbsp;</td>
-			<td>
-				<% upcoming_camps = Array.new %>
-				<% all_camps = Camp.upcoming %>
-				<% upcoming = current_user.instructor.camps.to_a %>
-				<% all_camps.each do |a| %>
-					<% if upcoming.include?(a) %>
-						<% upcoming_camps << a %>
-					<% end %>
-				<% end %>
-
-				<h3><span id="task_title">Upcoming Camps</span>  &nbsp;&nbsp;<span class="add_link"></span></h3>
-				<% if upcoming_camps.empty? %>
-					<p>You have no upcoming camps at this time.</p>
-				<% else %>
-					<div id="display_tasks">
-						<%= render :partial => 'partials/camp_item', :collection => upcoming_camps %>
-					</div>
-				<% end %>
-			</td>
-		</tr>
-	</table>
-
-<% elsif current_user.role == 'admin' %>
-
+<!-- If you're logged in as an admin -->
+<% if current_user.role == 'admin' %>
+	<p>Below is information on your perosnal details and upcoming camps. There are also links provided to generate reports for payment statuses of all the camps and families</p>
 
 <% end %>
+
+<!-- If you're logged in as an instructor -->
+<% if current_user.role == 'instructor' %>
+	<p>Below is information on your perosnal details and upcoming camps</p>
+<% end %>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr valign="top">
+		<td width="500">
+			<h3>Personal Information &nbsp;&nbsp;</h3>
+			<% if current_user.instructor.picture_url.nil? %>
+				<p><%= image_tag 'default.jpg', size: '250' %></p>
+			<% else %>
+				<p><%= image_tag current_user.instructor.picture_url, size: '250' %></p>
+			<% end %>
+
+			<strong>Name:&nbsp;&nbsp;</strong> 
+			  <%= current_user.instructor.proper_name %><br /><br />
+
+			<strong>Phone:&nbsp;&nbsp;</strong> 
+			  <%= number_to_phone(current_user.instructor.phone) %><br /><br />
+
+			<strong>Email:&nbsp;&nbsp;</strong> 
+			  <%= mail_to current_user.instructor.email, current_user.instructor.email, encode: "javascript" %><br /><br />
+
+			<strong>Active?&nbsp;&nbsp;</strong>
+			  <%= current_user.instructor.active ? "Yes" : "No" %><br /><br />
+
+			<strong>Biography</strong><br />
+			  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
+
+
+			<%= link_to "Edit information", edit_instructor_path(current_user.instructor), class: "button tiny radius" %>&nbsp;&nbsp;
+
+		</td>
+		<td width="40">&nbsp;</td>
+		<td>
+			<% upcoming_camps = Array.new %>
+			<% all_camps = Camp.upcoming %>
+			<% upcoming = current_user.instructor.camps.to_a %>
+			<% all_camps.each do |a| %>
+				<% if upcoming.include?(a) %>
+					<% upcoming_camps << a %>
+				<% end %>
+			<% end %>
+
+			<h3>Upcoming Camps</span>  &nbsp;&nbsp;<span class="add_link"></span></h3>
+			<% if upcoming_camps.empty? %>
+				<p>You have no upcoming camps at this time.</p>
+			<% else %>
+				<div id="display_tasks">
+					<table>
+						<tr>
+							<th>Camp Name</th>
+							<th>Start Date</th>
+							<th>End Date</th>
+						</tr>
+					<%= render :partial => 'partials/camp_item', :collection => upcoming_camps %>
+					</table>
+				</div>
+			<% end %>
+		</td>
+	</tr>
+</table>
+
+<!-- REPORTS -->
+<% if current_user.role == 'admin' %>
+	<div class="small-7 columns">
+		<%= render :partial => "camps" %>
+	</div>
+
+
+	<div class="small-5 columns">
+		<%= render :partial => "families" %>
+	</div>
+<% end %>
+
+
+
+
+
+

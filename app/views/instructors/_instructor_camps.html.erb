@@ -8,10 +8,14 @@
       <% end %>
     </ul>
   </div>
+<% else %>
+  <div class="panel clearfix">
+    <p>No upcoming camps</p>
+  </div>
 <% end %>
 
 <% unless @past_camps.empty? %>
-  <div class="panel clearfix" id="past">
+  <div class="panel clearfix">
     <h5>Past Camps</h5>
     <ul class="side-nav">
       <% @past_camps.each do |camp| %>
@@ -20,5 +24,7 @@
     </ul>
   </div>
 <% else %>
-  <p>No upcoming camps</p>
+  <div class="panel clearfix">
+    <p>No past camps</p>
+  </div>
 <% end %>
