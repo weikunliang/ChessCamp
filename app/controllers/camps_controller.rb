@@ -1,6 +1,6 @@
 class CampsController < ApplicationController
   include ActionView::Helpers::NumberHelper
-  before_action :set_camp, only: [:show, :edit, :update, :destroy]
+  before_action :set_camp, only: [:show, :edit, :update, :destroy, :report]
   #authorize_resource
 
   def index
@@ -12,6 +12,9 @@ class CampsController < ApplicationController
   def show
     @instructors = @camp.instructors.alphabetical.to_a
     @registrations = @camp.registrations.to_a
+  end
+
+  def report
   end
 
   def new

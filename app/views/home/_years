@@ -1,0 +1,34 @@
+<h3>Years</h3>
+<% unless @camps.empty? %>
+  <% cs = Array.new %>
+  <% years = Array.new %>
+  <% @camps.each do |camp| %>
+    <% if not years.include?(camp.start_date.year) %>
+      <% years << camp.start_date.year %>
+      <% cs << camp %>
+    <% end %>
+  <% end %>  
+  <table class="table">
+    <tr>
+      <th width="260">Year</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% for i in 0..(years.size-1) %>
+        <tr>
+          <% camp = cs[i] %>
+          <td><%= years[i] %></td>
+          <td><%= link_to 'Report', report_year_path(camp), class: "button tiny radius" %></td>
+        </tr>
+
+    <% end %>
+
+  </table>
+    <!-- Add the pagination using will_paginate gem -->
+  <span class="paginate">
+  <%= will_paginate @camps, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  </span>
+<% else %>
+  <p>No Camps</p>
+<% end %>

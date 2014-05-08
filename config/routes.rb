@@ -9,12 +9,17 @@ ChessCamp::Application.routes.draw do
   resources :locations
   resources :registrations
 
+  # the path to generate reports
+  get 'camps/:id/report' => 'camps#report', as: :report_camp
+  get 'registrations/:id/report' => 'registrations#report', as: :report_family
+  get 'families/:id/report' => 'families#report', as: :report_year
 
   # semi-static routes
   get 'home', to: 'home#index', as: :home
   get 'home/about', to: 'home#about', as: :about
   get 'home/contact', to: 'home#contact', as: :contact
   get 'home/privacy', to: 'home#privacy', as: :privacy
+  get 'home/year', to: 'home#year', as: :year
 
   # set the root url
   root to: 'home#index'

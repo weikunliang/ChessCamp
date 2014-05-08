@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
   include ActionView::Helpers::NumberHelper
-  before_action :set_family, only: [:show, :edit, :update, :destroy]
+  before_action :set_family, only: [:show, :edit, :update, :destroy, :report]
   authorize_resource
 
   def index
@@ -14,6 +14,10 @@ class FamiliesController < ApplicationController
 
   def new
     @family = Family.new
+  end
+
+  def report
+    @camps = Camp.all
   end
 
   def edit

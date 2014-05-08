@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  before_action :set_registration, only: [:show, :edit, :update, :destroy]
+  before_action :set_registration, only: [:show, :edit, :update, :destroy, :report]
   authorize_resource
 
   def index
@@ -22,6 +22,9 @@ class RegistrationsController < ApplicationController
         @student << a
       end
     end
+  end
+
+  def report
   end
 
   def edit

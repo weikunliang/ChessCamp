@@ -1,0 +1,36 @@
+<h3>Report for this Year</h3><br />
+
+<table>
+	<tr>
+		<th>Camp Name</th>
+		<th>Payment Received</th>
+		<th>Balance Due</th>
+	</tr>
+
+	<% pay = 0 %>
+	<% bal = 0 %>
+	<% @camps.each do |c| %>
+		<tr>
+			<td><%= c.name %></td>
+			<td><%= (c.registrations.paid.size * c.cost) + (c.registrations.deposit_only.size * 50) %></td>
+			<td><%= (c.registrations.deposit_only.size * (c.cost - 50)) %></td>
+			<% pay = pay + (c.registrations.paid.size * c.cost) + (c.registrations.deposit_only.size * 50)  %></td>
+			<% bal = bal + (c.registrations.deposit_only.size * (c.cost - 50)) %></td>
+		</tr>
+	<% end %>
+
+	<tr>
+		<td><strong>Total Received</strong></td>
+		<td><strong><%= pay %></strong></td>
+		<td>&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td><strong>Total Due</strong></td>
+		<td>&nbsp;</td>
+		<td><strong><%= bal %></strong></td>
+	</tr>
+
+</table>		 
+
+<%= link_to 'Back', home_path, :class => 'button tiny radius' %>&nbsp;&nbsp;

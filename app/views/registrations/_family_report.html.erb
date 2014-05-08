@@ -1,0 +1,35 @@
+<h3>Family Details</h3><br />
+
+<% @family = @registration.student.family %>
+
+<strong>Year:&nbsp;&nbsp;</strong>
+  <%= @registration.camp.start_date.year %><br /><br />
+
+<strong>Family Name:&nbsp;&nbsp;</strong> 
+  <%= @family.family_name %><br /><br />
+
+<strong>Parent First Name:&nbsp;&nbsp;</strong>
+  <%= @family.parent_first_name %><br /><br />
+
+<table>
+	<tr>
+		<th>Student</th>
+		<th>Camp</th>
+		<th>Payment</th>
+		<th>Balance</th>
+	</tr>
+
+	<% @family.students.alphabetical.to_a.each do |stu| %>
+		<% stu.registrations.by_student.to_a.each do |reg| %>
+			<tr>	
+				<td><%= stu.name %></td>
+				<td><%= reg.camp.name %></td>
+				<td><%= reg.payment_status == 'deposit' ? 50 : reg.camp.cost %></td>
+				<td><%= reg.payment_status == 'deposit' ? (reg.camp.cost - 50) : 0 %></td>
+			</tr>
+		<% end %>
+	<% end %>
+
+</table>
+
+<%= link_to 'Back', home_path, :class => 'button tiny radius' %>

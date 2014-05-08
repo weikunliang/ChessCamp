@@ -3,18 +3,30 @@
 <% if not @families.empty? %>
 <table class="table">
   <tr>
-    <th width="150">Family Name</th>
-    <th width="80">Parent</th>
-    <th></th>
-    <th></th>
+    <th width="110">Family Name</th>
+    <th width="90">Parent</th>
+    <th width="50">Year</th>
+
   </tr>
 
   <% @families.each do |family| %>
-    <tr>
-      <td><%= family.family_name %></td>
-      <td align="center"><%= family.parent_first_name %></td>
-      <td><%= link_to 'Report', edit_family_path(family), class: "button tiny radius" %></td>
-    </tr>
+    <% years = Array.new %>
+    <% all_students = family.students %>
+    <% all_students.each do |stu| %>
+      <% all_registrations = stu.registrations %>
+      <% all_registrations.each do |reg| %>
+        <% if not years.include?(reg.camp.start_date.year) %>
+          <% years << reg.camp.start_date.year %>
+          <tr>
+            <td><%= family.family_name %></td>
+            <td align="center"><%= family.parent_first_name %></td>
+            <td><%= reg.camp.start_date.year %></td>
+            <td><%= link_to 'Report', report_family_path(reg), class: "button tiny radius" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+    
   <% end %>
   </table>
   <!-- Add the pagination using will_paginate gem -->
@@ -23,5 +35,5 @@
   </span>
 
 <% else %>
-  <p>No active families</p>
+  <p>No Families</p>
 <% end %>
