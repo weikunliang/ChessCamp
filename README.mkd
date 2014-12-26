@@ -1,10 +1,10 @@
-## 67-272: Chess Camp Phase 5 Starter ##
+## 67-272: Chess Camp Phase 5##
 
 This is final code for the course project in 67-272: Application Design and Development.
 
-To set this up, clone this repository, run the `bundle install` command to ensure you have all the needed gems and then create the database with `rake db:migrate`.  If you want to populate the system with fictitious, but somewhat realistic data, you can run the `rake db:populate` command.  The populate script will create:
-- 100 families
-- over 200 students
-- over 35 camps
+To set this up, clone this repository, run the bundle install command to ensure you have all the needed gems and then create the database with rake db:migrate. If you want to populate the system with fictitious, but somewhat realistic data, you can run the rake db:populate command. The populate script will create:
 
-Many objects are created with some element of randomness so you will get slightly different results each time it is run.  However, instructors and users are fixed.  All users in the system have a password of 'secret'.  In terms of users there are two admins (Alex and Mark) and four instructor-level users.  The username for each is their first name in all lowercase.
+100 families
+over 200 students
+over 35 camps
+Many objects are created with some element of randomness so you will get slightly different results each time it is run. However, instructors and users are fixed. All users in the system have a password of 'secret'. In terms of users there are two admins (Alex and Mark) and four instructor-level users. The username for each is their first name in all lowercase. For example, you can log in using username 'mark' and password 'secret'

@@ -5,7 +5,6 @@
   <% @camps.each do |camp| %>
     <% if not years.include?(camp.start_date.year) %>
       <% years << camp.start_date.year %>
-      <% cs << camp %>
     <% end %>
   <% end %>  
   <table class="table">
@@ -15,10 +14,10 @@
       <th></th>
     </tr>
 
-    <% for i in 0..(years.size-1) %>
+    <% years.each do |y| %>
         <tr>
-          <% camp = cs[i] %>
-          <td><%= years[i] %></td>
+          <% camp = y[0] %>
+          <td><%= y[1] %></td>
           <td><%= link_to 'Report', report_year_path(camp), class: "button tiny radius" %></td>
         </tr>
 
