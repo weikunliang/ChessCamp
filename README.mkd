@@ -8,3 +8,5 @@ To set this up, clone this repository, run the bundle install command to ensure 
 over 200 students
 over 35 camps
 Many objects are created with some element of randomness so you will get slightly different results each time it is run. However, instructors and users are fixed. All users in the system have a password of 'secret'. In terms of users there are two admins (Alex and Mark) and four instructor-level users. The username for each is their first name in all lowercase. For example, you can log in using username 'mark' and password 'secret'
+
+Note: The date validation for start date in camp model was removed. The start date was originally required to be later than today's date. However, today's date is constantly changing and may cause errors in validating the sample data set. 
